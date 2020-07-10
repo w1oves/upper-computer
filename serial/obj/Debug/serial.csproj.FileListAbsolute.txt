@@ -28,3 +28,13 @@ D:\Study\智能车\上位机\upper_computer\serial\obj\Debug\serial.csproj.Gener
 D:\Study\智能车\上位机\upper_computer\serial\obj\Debug\serial.csproj.CoreCompileInputs.cache
 D:\Study\智能车\上位机\upper_computer\serial\obj\Debug\serial.exe
 D:\Study\智能车\上位机\upper_computer\serial\obj\Debug\serial.pdb
+C:\Users\18297\Source\Repos\upper_computer\serial\bin\Debug\serial.exe.config
+C:\Users\18297\Source\Repos\upper_computer\serial\bin\Debug\serial.exe
+C:\Users\18297\Source\Repos\upper_computer\serial\bin\Debug\serial.pdb
+C:\Users\18297\Source\Repos\upper_computer\serial\obj\Debug\serial.csprojAssemblyReference.cache
+C:\Users\18297\Source\Repos\upper_computer\serial\obj\Debug\serial.Form1.resources
+C:\Users\18297\Source\Repos\upper_computer\serial\obj\Debug\serial.Properties.Resources.resources
+C:\Users\18297\Source\Repos\upper_computer\serial\obj\Debug\serial.csproj.GenerateResource.cache
+C:\Users\18297\Source\Repos\upper_computer\serial\obj\Debug\serial.csproj.CoreCompileInputs.cache
+C:\Users\18297\Source\Repos\upper_computer\serial\obj\Debug\serial.exe
+C:\Users\18297\Source\Repos\upper_computer\serial\obj\Debug\serial.pdb

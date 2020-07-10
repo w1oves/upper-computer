@@ -9,19 +9,21 @@ namespace serial
 {
     public partial class Form1 : Form
     {
-        public const byte START = 1;
-        public const byte STOP = 2;
-        public const byte SENDGRAY = 3;
-        public const byte SHOW_PID = 4;
-        public const byte SET_PID_MOTOR_P = 5;
-        public const byte SET_PID_MOTOR_I = 6;
-        public const byte SET_PID_MOTOR_D = 7;
-        public const byte SET_PID_SERVO_STRAIGHT_P = 8;
-        public const byte SET_PID_SERVO_STRAIGHT_D = 9;
-        public const byte SET_PID_SERVO_TURN_P = 10;
-        public const byte SET_PID_SERVO_TURN_D = 11;
-        public const byte SET_PID_SERVO_BIG_TURN_P = 12;
-        public const byte SET_PID_SERVO_BIG_TURN_D = 13;
+        public const byte SLAVE_Start = 1;
+        public const byte SLAVE_Stop = 2;
+        public const byte SLAVE_SendGray = 3;
+        public const byte SLAVE_ShowPid = 4;
+        public const byte SLAVE_SetPid_Motor_P = 5;
+        public const byte SLAVE_SetPid_Motor_I = 6;
+        public const byte SLAVE_SetPid_Motor_D = 7;
+        public const byte SLAVE_SetPid_Servo_P_Straight = 8;
+        public const byte SLAVE_SetPid_Servo_D_Straight = 9;
+        public const byte SLAVE_SetPid_Servo_P_Servo = 10;
+        public const byte SLAVE_SetPid_Servo_D_Servo = 11;
+        public const byte SLAVE_SetPid_Servo_P_BigTurn = 12;
+        public const byte SLAVE_SetPid_Servo_D_BigTurn = 13;
+        public const byte SLAVE_SendBin = 14;
+        public const byte SLAVE_SendSearchLine = 15;
         public Form1()
         {
             InitializeComponent();
@@ -322,7 +324,7 @@ namespace serial
 
             if (serialPort1.IsOpen)
             {
-                temp[0] = START;
+                temp[0] = SLAVE_Start;
                 serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
             }
 
@@ -333,7 +335,7 @@ namespace serial
             recTextBox.Clear();
             if (serialPort1.IsOpen)
             {
-                temp[0] = STOP;
+                temp[0] = SLAVE_Stop;
                 serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
             }
         }
@@ -343,7 +345,7 @@ namespace serial
             recTextBox.Clear();
             if (serialPort1.IsOpen)
             {
-                temp[0] = SHOW_PID;
+                temp[0] = SLAVE_ShowPid;
                 serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
             }
         }
@@ -357,7 +359,19 @@ namespace serial
         {
             if (serialPort1.IsOpen)
             {
-                temp[0] = SENDGRAY;
+                switch(comboBox4.SelectedItem.ToString())
+                {
+                    case "灰度":
+                        temp[0] = SLAVE_SendGray;
+                        break;
+                    case "二值化":
+                        temp[0] = SLAVE_SendBin;
+                        break;
+                    case "搜线":
+                        temp[0] = SLAVE_SendSearchLine;
+                        break;
+
+                }
                 serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
             }
         }
@@ -370,15 +384,15 @@ namespace serial
                 switch (pidname1.SelectedItem.ToString())
                 {
                     case "电机P":
-                        temp[0] = SET_PID_MOTOR_P;
+                        temp[0] = SLAVE_SetPid_Motor_P;
                         serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
                         break;
                     case "电机I":
-                        temp[0] = SET_PID_MOTOR_I;
+                        temp[0] = SLAVE_SetPid_Motor_I;
                         serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
                         break;
                     case "电机D":
-                        temp[0] = SET_PID_MOTOR_D;
+                        temp[0] = SLAVE_SetPid_Motor_D;
                         serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
                         break;
                     case "舵机P":
@@ -397,23 +411,23 @@ namespace serial
                     {
                         case "直道":
                             if (duoji == 1)
-                                temp[0] = SET_PID_SERVO_STRAIGHT_P;
+                                temp[0] = SLAVE_SetPid_Servo_P_Straight;
                             else
-                                temp[0] = SET_PID_SERVO_STRAIGHT_D;
+                                temp[0] = SLAVE_SetPid_Servo_D_Straight;
                             serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
                             break;
                         case "弯道":
                             if (duoji == 1)
-                                temp[0] = SET_PID_SERVO_TURN_P;
+                                temp[0] = SLAVE_SetPid_Servo_P_Servo;
                             else
-                                temp[0] = SET_PID_SERVO_TURN_D;
+                                temp[0] = SLAVE_SetPid_Servo_D_Servo;
                             serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
                             break;
                         case "急转":
                             if (duoji == 1)
-                                temp[0] = SET_PID_SERVO_BIG_TURN_P;
+                                temp[0] = SLAVE_SetPid_Servo_P_BigTurn;
                             else
-                                temp[0] = SET_PID_SERVO_BIG_TURN_D;
+                                temp[0] = SLAVE_SetPid_Servo_D_BigTurn;
                             serialPort1.Write(System.Text.Encoding.ASCII.GetString(temp));
                             break;
                         default:
